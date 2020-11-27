@@ -7,13 +7,13 @@
 | Column             | Type   | Options                       |
 | ------------------ | ------ | ----------------------------- |
 | nickname           | string | null: false, uniqueness: true |
-| mail               | string | null: false                   |
+| email              | string | null: false                   |
 | encrypted_password | string | null: false                   |
-| first-name1        | string | null: false                   |
-| last-name1         | string | null: false                   |
-| first-name2        | string | null: false                   |
-| last-name2         | string | null: false                   |
-| birthday           | integer| null: false                   |
+| first_name1        | string | null: false                   |
+| last_name1         | string | null: false                   |
+| first_name2        | string | null: false                   |
+| last_name2         | string | null: false                   |
+| birthday           | date   | null: false                   |
 
 ### Association
 
@@ -27,12 +27,12 @@
 | --------------- | ---------- | ------------------------------ |
 | product         | string     | null: false                    |
 | detail          | text       | null: false                    |
-| category        | string     | null: false                    |
-| status          | string     | null: false                    |
-| delivery-source | integer    | null: false                    |
-| delivery-days   | integer    | null: false                    |
+| category        | integer    | null: false                    |
+| status          | integer    | null: false                    |
+| delivery_source | integer    | null: false                    |
+| delivery_days   | integer    | null: false                    |
 | price           | integer    | null: false                    |
-| user_id         | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -47,9 +47,9 @@
 | prefecture      | string     | null: false                    |
 | municipality    | string     | null: false                    |
 | address         | string     | null: false                    |
-| building-name   | string     | null: false                    |
-| phone-number    | string     | null: false                    |
-| item_id         | references | null: false, foreign_key: true |
+| building_name   | string     | null: false                    |
+| phone_number    | string     | null: false                    |
+| item            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,8 +59,10 @@
 
 ## management テーブル
 
-| Column          | Type       | Options                        |
-| -------         | ---------- | ------------------------------ |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
 
 ### Association
 
