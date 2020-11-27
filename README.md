@@ -1,24 +1,70 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## users テーブル
 
-* Ruby version
+| Column             | Type   | Options                       |
+| ------------------ | ------ | ----------------------------- |
+| nickname           | string | null: false, uniqueness: true |
+| email              | string | null: false                   |
+| encrypted_password | string | null: false                   |
+| first_name1        | string | null: false                   |
+| last_name1         | string | null: false                   |
+| first_name2        | string | null: false                   |
+| last_name2         | string | null: false                   |
+| birthday           | date   | null: false                   |
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :items
+- has_many :management
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| product            | string     | null: false                    |
+| detail             | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| delivery_source_id | integer    | null: false                    |
+| delivery_day_id    | integer    | null: false                    |
+| delivery_fee_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs to :user
+- has_one :management
 
-* Deployment instructions
+## buy テーブル
 
-* ...
+| Column          | Type       | Options                        |
+| -------         | ---------- | ------------------------------ |
+| prefecture_id   | integer    | null: false                    |
+| municipality    | string     | null: false                    |
+| address         | string     | null: false                    |
+| building_name   | string     |                                |
+| postal_code     | string     | null: false                    |
+| phone_number    | string     | null: false                    |
+| management      | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to:management
+
+
+## management テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+### Association
+
+- has_one :buy
+- belongs_to :item
+- belongs_to :user
