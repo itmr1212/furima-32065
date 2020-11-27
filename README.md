@@ -23,16 +23,17 @@
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| product         | string     | null: false                    |
-| detail          | text       | null: false                    |
-| category        | integer    | null: false                    |
-| status          | integer    | null: false                    |
-| delivery_source | integer    | null: false                    |
-| delivery_days   | integer    | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| product            | string     | null: false                    |
+| detail             | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| delivery_source_id | integer    | null: false                    |
+| delivery_day_id    | integer    | null: false                    |
+| delivery_fee_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -44,10 +45,11 @@
 
 | Column          | Type       | Options                        |
 | -------         | ---------- | ------------------------------ |
-| prefecture      | string     | null: false                    |
+| prefecture_id   | string     | null: false                    |
 | municipality    | string     | null: false                    |
 | address         | string     | null: false                    |
 | building_name   | string     | null: false                    |
+| postal_code     | string     | null: false                    |
 | phone_number    | string     | null: false                    |
 | item            | references | null: false, foreign_key: true |
 
@@ -61,8 +63,8 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
